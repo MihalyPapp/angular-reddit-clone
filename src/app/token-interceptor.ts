@@ -14,8 +14,8 @@ export class TokenInterceptor implements HttpInterceptor {
     constructor(private authService: AuthService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        /*if (request.url.indexOf('refresh') !== -1 || request.url.indexOf('login') !== -1)
-            return next.handle(request);*/
+        if (request.url.indexOf('refresh') !== -1 || request.url.indexOf('login') !== -1)
+            return next.handle(request);
 
         const jwtToken = this.authService.getJwtToken()
         console.log("token: " + jwtToken)
@@ -33,7 +33,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     addToken(request: HttpRequest<any>, jwtToken: any) {
         return request.clone({
-            headers: request.headers.set('Authorization','Bearer ' + jwtToken)
+            headers: request.headers.set('Authorization', 'Bearer ' + jwtToken)
         })
     }
 
