@@ -31,7 +31,6 @@ export class AuthService {
           this.localStorage.store('expiresAt', data.expiresAt)
           this.localStorage.store('refreshToken', data.refreshToken)
           this.localStorage.store('username', data.username)
-          console.log("login request -> storing token") //////////////////////////////////////
           return true;
         }),
         catchError(() => {
