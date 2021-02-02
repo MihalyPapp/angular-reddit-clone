@@ -40,7 +40,6 @@ export class AuthService {
   }
 
   getJwtToken() {
-    console.log("getJwtToken from localstorage")
     return this.localStorage.retrieve('authenticationToken')
   }
 
@@ -59,6 +58,10 @@ export class AuthService {
   }
   getRefreshToken() {
     return this.localStorage.retrieve('refreshToken')
+  }
+
+  isLoggedIn(): boolean {
+    return this.getJwtToken() != null
   }
 
 }
